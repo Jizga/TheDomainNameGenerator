@@ -12,16 +12,6 @@ const extensions = [".com", ".net", ".us", ".io"];
 const generateDomains = (arr1, arr2, arr3, arr4) => {
   let domainList = [];
 
-  //   for (let i = 0; i < arr1.length; i++) {
-  //     for (let j = 0; j < arr2.length; j++) {
-  //       for (let k = 0; k < arr3.length; k++) {
-  //         for (let w = 0; w < arr4.length; w++) {
-  //           domainList.push(arr1[i] + arr2[j] + arr3[k] + arr4[w]);
-  //         }
-  //       }
-  //     }
-  //   }
-
   arr1.map(pronoun =>
     arr2.map(adjective =>
       arr3.map(noun =>
@@ -37,6 +27,11 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
     .join(" ");
 };
 
+const hideRegards = () => {
+  document.getElementById("regards").style.visibility = "hidden";
+  document.getElementById("listContainer").style.marginTop = "-22rem";
+};
+
 window.onload = () => {
   document.getElementById("btnNewDomain").addEventListener("click", () => {
     document.getElementById("domain").innerHTML = `<ul>${generateDomains(
@@ -45,5 +40,7 @@ window.onload = () => {
       noun,
       extensions
     )}</ul>`;
+
+    hideRegards();
   });
 };
