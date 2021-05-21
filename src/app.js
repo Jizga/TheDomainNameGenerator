@@ -28,8 +28,25 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
 };
 
 const hideRegards = () => {
+  //   if (document.getElementById("regards").style.visibility == "visible") {
+  //     document.getElementById("regards").style.visibility = "hidden";
+  //     document.getElementById("listContainer").style.marginTop = "-22rem";
+  //   } else {
+  //     document.getElementById("regards").style.visibility == "visible";
+  //   }
+
   document.getElementById("regards").style.visibility = "hidden";
   document.getElementById("listContainer").style.marginTop = "-22rem";
+};
+
+const showRegards = () => {
+  document.getElementById("regards").style.visibility = "visible";
+  document.getElementById("listContainer").style.marginTop = "0";
+  document.getElementById(
+    "domain"
+  ).innerHTML = `<p class="alert alert-warning mt-4" id="domain">
+            You need to click on the button to show the domains list
+          </p>`;
 };
 
 window.onload = () => {
@@ -43,4 +60,8 @@ window.onload = () => {
 
     hideRegards();
   });
+
+  document
+    .getElementById("hideList")
+    .addEventListener("click", () => showRegards());
 };
