@@ -27,26 +27,20 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
     .join(" ");
 };
 
-const hideRegards = () => {
-  //   if (document.getElementById("regards").style.visibility == "visible") {
-  //     document.getElementById("regards").style.visibility = "hidden";
-  //     document.getElementById("listContainer").style.marginTop = "-22rem";
-  //   } else {
-  //     document.getElementById("regards").style.visibility == "visible";
-  //   }
+const hideShowRegards = () => {
+  let regards = document.getElementById("regards");
+  let listContainer = document.getElementById("listContainer");
 
-  document.getElementById("regards").style.visibility = "hidden";
-  document.getElementById("listContainer").style.marginTop = "-22rem";
-};
-
-const showRegards = () => {
-  document.getElementById("regards").style.visibility = "visible";
-  document.getElementById("listContainer").style.marginTop = "0";
-  document.getElementById(
-    "domain"
-  ).innerHTML = `<p class="alert alert-warning mt-4" id="domain">
-            You need to click on the button to show the domains list
-          </p>`;
+  if (regards.style.visibility == "visible") {
+    regards.style.visibility = "hidden";
+    listContainer.style.marginTop = "-22rem";
+  } else {
+    regards.style.visibility = "visible";
+    listContainer.style.marginTop = "0";
+    document.getElementById("domain").innerHTML = `<p>
+                You need to click on the button to show the domains list
+                </p>`;
+  }
 };
 
 window.onload = () => {
@@ -58,10 +52,6 @@ window.onload = () => {
       extensions
     )}</ul>`;
 
-    hideRegards();
+    hideShowRegards();
   });
-
-  document
-    .getElementById("hideList")
-    .addEventListener("click", () => showRegards());
 };
