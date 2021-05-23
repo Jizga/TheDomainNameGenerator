@@ -1,7 +1,5 @@
-/* eslint-disable */
 import "bootstrap";
 import "./style.css";
-
 import "./assets/img/rigo-baby.jpg";
 
 const pronoun = ["the", "our"];
@@ -28,24 +26,25 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
 };
 
 const hideShowRegards = () => {
-  let regards = document.getElementById("regards");
-  let listContainer = document.getElementById("listContainer");
+  //Uso clases e id ya que las clases van a variar
+  let regards = document.querySelector("#regards");
+  //Para poder trabajar con las clases del DOM como si fuera un array
+  const classes = [...regards.classList];
 
-  if (regards.style.visibility == "visible") {
-    regards.style.visibility = "hidden";
-    listContainer.style.marginTop = "-22rem";
+  if (classes.includes("show")) {
+    regards.classList.remove("show");
+    regards.classList.add("hide");
   } else {
-    regards.style.visibility = "visible";
-    listContainer.style.marginTop = "0";
-    document.getElementById("domain").innerHTML = `<p>
-                You need to click on the button to show the domains list
-                </p>`;
+    regards.classList.remove("hide");
+    regards.classList.add("show");
+    document.querySelector("#domain").innerHTML =
+      "You need to click on the button to show the domains list";
   }
 };
 
 window.onload = () => {
-  document.getElementById("btnNewDomain").addEventListener("click", () => {
-    document.getElementById("domain").innerHTML = `<ul>${generateDomains(
+  document.querySelector("#btnNewDomain").addEventListener("click", () => {
+    document.querySelector("#domain").innerHTML = `<ul>${generateDomains(
       pronoun,
       adj,
       noun,

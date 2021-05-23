@@ -2,4 +2,22 @@
 
 ul li {
   list-style: none;
+  padding: 0 1rem 0 1rem;
+}
+
+li:nth-child(odd) {
+  background-color: rgba(228, 154, 57, 0.836);
+  color: whitesmoke;
+}
+
+ul {
+  padding-inline-start: 0 !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: flex !important;
 }
