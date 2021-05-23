@@ -28,8 +28,13 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
 };
 
 const hideShowRegards = () => {
-  let regards = document.getElementById("regards");
-  let listContainer = document.getElementById("listContainer");
+  let regards = document.querySelector("#regards");
+  let listContainer = document.querySelector("#listContainer");
+
+  console.log(
+    'document.querySelector("#regards")',
+    document.querySelector("#regards")
+  );
 
   if (regards.style.visibility == "visible") {
     regards.style.visibility = "hidden";
@@ -37,15 +42,14 @@ const hideShowRegards = () => {
   } else {
     regards.style.visibility = "visible";
     listContainer.style.marginTop = "0";
-    document.getElementById("domain").innerHTML = `<p>
-                You need to click on the button to show the domains list
-                </p>`;
+    document.querySelector("#domain").innerHTML =
+      "You need to click on the button to show the domains list";
   }
 };
 
 window.onload = () => {
-  document.getElementById("btnNewDomain").addEventListener("click", () => {
-    document.getElementById("domain").innerHTML = `<ul>${generateDomains(
+  document.querySelector("#btnNewDomain").addEventListener("click", () => {
+    document.querySelector("#domain").innerHTML = `<ul>${generateDomains(
       pronoun,
       adj,
       noun,
