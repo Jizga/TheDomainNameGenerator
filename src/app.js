@@ -26,6 +26,7 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
 };
 
 const hideShowRegards = () => {
+  //Uso clases e id ya que las clases van a variar
   let regards = document.querySelector("#regards");
   //Para poder trabajar con las clases del DOM como si fuera un array
   const classes = [...regards.classList];
