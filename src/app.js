@@ -1,7 +1,5 @@
-/* eslint-disable */
 import "bootstrap";
 import "./style.css";
-
 import "./assets/img/rigo-baby.jpg";
 
 const pronoun = ["the", "our"];
@@ -29,19 +27,15 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
 
 const hideShowRegards = () => {
   let regards = document.querySelector("#regards");
-  let listContainer = document.querySelector("#listContainer");
+  //Para poder trabajar con las clases del DOM como si fuera un array
+  const classes = [...regards.classList];
 
-  console.log(
-    'document.querySelector("#regards")',
-    document.querySelector("#regards")
-  );
-
-  if (regards.style.visibility == "visible") {
-    regards.style.visibility = "hidden";
-    listContainer.style.marginTop = "-22rem";
+  if (classes.includes("show")) {
+    regards.classList.remove("show");
+    regards.classList.add("hide");
   } else {
-    regards.style.visibility = "visible";
-    listContainer.style.marginTop = "0";
+    regards.classList.remove("hide");
+    regards.classList.add("show");
     document.querySelector("#domain").innerHTML =
       "You need to click on the button to show the domains list";
   }
