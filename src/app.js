@@ -55,7 +55,9 @@ const splitDomainsList = arr => {
 };
 
 window.onload = () => {
-  document.querySelector("#btnNewDomain").addEventListener("click", () => {
+  document.querySelector("#btnShowHideDomain").addEventListener("click", () => {
+    document.querySelector("#listContainer").style.marginTop = "2rem";
+
     document.querySelector(
       "#domain"
     ).innerHTML = `<div class = "row p-2">${splitDomainsList(

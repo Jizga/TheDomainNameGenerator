@@ -1,4 +1,10 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+h1 {
+  font-family: "Lobster", cursive;
+  text-shadow: 2px 2px 4px #000000;
+}
 
 div li {
   list-style: none;

@@ -13,15 +13,18 @@
     <link rel="shortcut icon" href="./4geeks.ico" />
   </head>
 
-  <body>
+  <body class="bg-dark">
     <div class="container-fluid align-items-center">
       <div
         class="row d-flex justify-content-center align-items-center text-center"
         id="regards"
       >
         <div class="col-4">
-          <h1 class="mt-5 ">Hello My Friend!!!</h1>
-          <img src="./rigo-baby.jpg" />
+          <h1 class="mt-5 mb-3 text-white">Hello My Friend!!!</h1>
+          <img
+            src="./rigo-baby.jpg"
+            class="rounded-circle shadow-sm p-3 mb-5 bg-white rounded"
+          />
         </div>
       </div>
 
@@ -30,17 +33,18 @@
         id="listContainer"
       >
         <div class="col-5">
-          <p class="alert alert-warning mt-4" id="domain">
+          <p class="alert alert-warning" id="domain">
             You need to click on the button to show the domains list
           </p>
         </div>
       </div>
 
-      <div
-        class="row d-flex justify-content-center align-items-center text-center mb-5"
-      >
-        <div class="col-4">
-          <button class="btn btn-outline-info" id="btnNewDomain">
+      <div class="row d-flex justify-content-around text-center mb-5">
+        <div class="col-6">
+          <button class="btn btn-outline-success mr-2" id="btnNewDomain">
+            Generate a New Domain
+          </button>
+          <button class="btn btn-outline-info" id="btnShowHideDomain">
             Show/Hide the Domains List
           </button>
         </div>
