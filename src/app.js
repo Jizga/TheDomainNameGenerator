@@ -31,12 +31,12 @@ const hideShowRegards = () => {
   //Para poder trabajar con las clases del DOM como si fuera un array
   const classes = [...regards.classList];
 
-  if (classes.includes("show")) {
-    regards.classList.remove("show");
-    regards.classList.add("hide");
+  if (classes.includes("d-flex")) {
+    regards.classList.remove("d-flex");
+    regards.classList.add("d-none");
   } else {
-    regards.classList.remove("hide");
-    regards.classList.add("show");
+    regards.classList.remove("d-none");
+    regards.classList.add("d-flex");
     document.querySelector("#domain").innerHTML =
       "You need to click on the button to show the domains list";
   }
