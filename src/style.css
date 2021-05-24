@@ -13,11 +13,3 @@ li:nth-child(odd) {
 ul {
   padding-inline-start: 0 !important;
 }
-
-.hide {
-  display: none !important;
-}
-
-.show {
-  display: flex !important;
-}
