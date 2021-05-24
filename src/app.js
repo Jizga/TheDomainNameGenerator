@@ -5,7 +5,7 @@ import "./assets/img/rigo-baby.jpg";
 const pronoun = ["the", "our"];
 const adj = ["great", "big"];
 const noun = ["jogger", "racoon"];
-const extensions = [".com", ".net", ".us", ".io"];
+const extensions = [".com", "es"];
 
 const generateDomains = (arr1, arr2, arr3, arr4) => {
   let domainList = [];
@@ -20,9 +20,9 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
     )
   );
 
-  return domainList
-    .map(str => `<li><i class="far fa-check-circle mr-2"></i> ${str}</li>`)
-    .join(" ");
+  return domainList.map(
+    str => `<li><i class="far fa-check-circle mr-3"></i> ${str}</li>`
+  );
 };
 
 const hideShowRegards = () => {
@@ -42,14 +42,25 @@ const hideShowRegards = () => {
   }
 };
 
+const splitDomainsList = arr => {
+  let firstPartArr = arr.slice(0, arr.length / 2);
+  let secondPartArr = arr.slice(arr.length / 2, arr.length);
+
+  return `<div class = "col-6 p-0">
+            ${firstPartArr}
+          </div>
+          <div class = "col-6 p-0">
+            ${secondPartArr}
+          </div>`;
+};
+
 window.onload = () => {
   document.querySelector("#btnNewDomain").addEventListener("click", () => {
-    document.querySelector("#domain").innerHTML = `<ul>${generateDomains(
-      pronoun,
-      adj,
-      noun,
-      extensions
-    )}</ul>`;
+    document.querySelector(
+      "#domain"
+    ).innerHTML = `<div class = "row p-2">${splitDomainsList(
+      generateDomains(pronoun, adj, noun, extensions).join(" ")
+    )}</div>`;
 
     hideShowRegards();
   });
