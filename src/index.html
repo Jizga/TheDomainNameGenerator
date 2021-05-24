@@ -36,16 +36,27 @@
           <p class="alert alert-warning" id="domain">
             You need to click on the button to show the domains list
           </p>
+          <form action="submit" method="post">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Write you new domain"
+            />
+          </form>
         </div>
       </div>
 
-      <div class="row d-flex justify-content-around text-center mb-5">
+      <div class="row d-flex justify-content-around text-center mb-5 mt-3">
         <div class="col-6">
-          <button class="btn btn-outline-success mr-2" id="btnNewDomain">
-            Generate a New Domain
-          </button>
           <button class="btn btn-outline-info" id="btnShowHideDomain">
             Show/Hide the Domains List
+          </button>
+          <button
+            class="btn btn-outline-success mr-2"
+            type="submit"
+            id="btnNewDomain"
+          >
+            Generate a New Domain
           </button>
         </div>
       </div>
