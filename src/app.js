@@ -5,7 +5,7 @@ import "./assets/img/rigo-baby.jpg";
 const pronoun = ["the", "our"];
 const adj = ["great", "big"];
 const noun = ["jogger", "racoones"];
-const extensions = [".com", ".es"];
+const extensions = [".com", ".io"];
 
 const generateDomains = (arr1, arr2, arr3, arr4) => {
   let domainList = [];
@@ -22,10 +22,11 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
 
   return domainList.map(
     str =>
-      `<li><i class="far fa-check-circle mr-3"></i> ${str.replace(
-        "es.com",
-        ".es"
-      )}</li>`
+      //   Hay que hacer esta parte más dinámica
+      `<li>
+            <i class="far fa-check-circle mr-3"></i>
+                ${str.replace("es.", ".es")}
+        </li>`
   );
 };
 
