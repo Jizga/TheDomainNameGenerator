@@ -46,6 +46,10 @@ const splitDomainsList = arr => {
   );
 };
 
+const generateAndInsertANewDomainInDomainsList = domIdInput => {
+  console.log("domIdInput ---> ", domIdInput);
+};
+
 const hideShowRegards = (domIdHideShow, domIdGenerate) => {
   //Para poder trabajar con las clases del DOM como si fuera un array
   const classes = [...domIdHideShow.classList];
@@ -75,5 +79,10 @@ window.onload = () => {
     let initText = document.querySelector("#domain");
 
     hideShowRegards(regards, initText);
+  });
+
+  document.querySelector("#btnNewDomain").addEventListener("click", () => {
+    let inputDom = document.querySelector("input");
+    generateAndInsertANewDomainInDomainsList(inputDom);
   });
 };
