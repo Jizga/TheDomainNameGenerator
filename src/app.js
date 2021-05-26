@@ -2,10 +2,10 @@ import "bootstrap";
 import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 
-const pronoun = ["the", "our"];
-const adj = ["great", "big"];
-const noun = ["jogger", "racoones"];
-const extensions = [".com", ".io"];
+let pronoun = ["the", "our"];
+let adj = ["great", "big"];
+let noun = ["jogger", "racoones"];
+let extensions = [".com", ".io"];
 
 const generateDomains = (arr1, arr2, arr3, arr4) => {
   let domainList = [];
@@ -23,12 +23,22 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
   return domainList;
 };
 
-const formGenerateDomains = (arr, newDomain) => {
-  arr.push(newDomain);
+const generateAndInsertANewDomainInDomainsList = domIdInput => {
+  let newDomain = "";
+
+  domIdInput.value !== "" ? (newDomain = domIdInput.value) : newDomain;
+
+  return newDomain;
+};
+
+const formGenerateDomains = newDomain => {
+  noun.push(newDomain);
+
+  let arr = generateDomains(pronoun, adj, noun, extensions);
+
   return arr.map(
     str =>
       //   Hay que hacer esta parte más dinámica
-      // '${newDomain}' no va ahí, sale muchas veces
       `<li>
             <i class="far fa-check-circle mr-3"></i>
                 ${str.replace("es.", ".es")}
@@ -46,16 +56,6 @@ const splitDomainsList = arr => {
   return (
     formSplitDomainsList(firstPartArr) + formSplitDomainsList(secondPartArr)
   );
-};
-
-const generateAndInsertANewDomainInDomainsList = domIdInput => {
-  let newDomain = "";
-
-  domIdInput.value !== "" ? (newDomain = domIdInput.value) : newDomain;
-
-  console.log(newDomain);
-
-  return newDomain;
 };
 
 const hideShowRegards = (domIdHideShow, domIdGenerate) => {
@@ -86,10 +86,7 @@ window.onload = () => {
     document.querySelector(
       "#domain"
     ).innerHTML = `<div class = "row p-2">${splitDomainsList(
-      formGenerateDomains(
-        generateDomains(pronoun, adj, noun, extensions),
-        generateAndInsertANewDomainInDomainsList(inputDom)
-      )
+      formGenerateDomains(generateAndInsertANewDomainInDomainsList(inputDom))
     )}</div>`;
 
     let regards = document.querySelector("#regards");
