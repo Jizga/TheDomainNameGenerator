@@ -38,11 +38,32 @@ const formGenerateDomains = newDomain => {
 
   return arr.map(
     //   Hay que hacer esta parte más dinámica
-    str =>
-      `<li><i class="far fa-check-circle mr-3"></i>${str.replace(
-        "es.",
-        ".es"
-      )}</li>`
+    //Hay eliminar los ".esxx" *************** ??????????'
+
+    str => {
+      //**** */ ---------------- MATTIA -----------------------------
+      //   console.log(str.split(".")[0].substr(-3));
+
+      //   if (extensions.includes("." + str.split(".")[0].substr(-3))) {
+      //     str = str.split(".")[0].substr(-3);
+      //   }
+      //   return `<li><i class="far fa-check-circle mr-3"></i>${str.replace(
+      //     "es.",
+      //     ".es"
+      //   )}</li>`;
+
+      const IndxExtension = str.search("es.");
+      let newStr;
+
+      if (IndxExtension !== -1) {
+        newStr = str.slice(0, IndxExtension);
+        newStr += ".es";
+      } else {
+        newStr = str;
+      }
+
+      return `<li><i class="far fa-check-circle mr-3"></i>${newStr}</li>`;
+    }
   );
 };
 
