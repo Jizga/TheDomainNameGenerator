@@ -23,13 +23,15 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
   return domainList;
 };
 
-const formGenerateDomains = arr => {
+const formGenerateDomains = (arr, newDomain) => {
   return arr.map(
     str =>
       //   Hay que hacer esta parte más dinámica
+      // '${newDomain}' no va ahí, sale muchas veces
       `<li>
             <i class="far fa-check-circle mr-3"></i>
                 ${str.replace("es.", ".es")}
+                ${newDomain}
         </li>`
   );
 };
@@ -47,7 +49,13 @@ const splitDomainsList = arr => {
 };
 
 const generateAndInsertANewDomainInDomainsList = domIdInput => {
-  console.log("domIdInput ---> ", domIdInput);
+  let newDomain = "";
+
+  domIdInput.value !== "" ? (newDomain = domIdInput.value) : newDomain;
+
+  console.log(newDomain);
+
+  return newDomain;
 };
 
 const hideShowRegards = (domIdHideShow, domIdGenerate) => {
@@ -66,23 +74,29 @@ const hideShowRegards = (domIdHideShow, domIdGenerate) => {
 };
 
 window.onload = () => {
-  document.querySelector("#btnShowHideDomain").addEventListener("click", () => {
-    document.querySelector("#listContainer").style.marginTop = "2rem";
-
-    document.querySelector(
-      "#domain"
-    ).innerHTML = `<div class = "row p-2">${splitDomainsList(
-      formGenerateDomains(generateDomains(pronoun, adj, noun, extensions))
-    )}</div>`;
-
-    let regards = document.querySelector("#regards");
-    let initText = document.querySelector("#domain");
-
-    hideShowRegards(regards, initText);
-  });
-
   document.querySelector("#btnNewDomain").addEventListener("click", () => {
     let inputDom = document.querySelector("input");
+
+    document
+      .querySelector("#btnShowHideDomain")
+      .addEventListener("click", () => {
+        document.querySelector("#listContainer").style.marginTop = "2rem";
+
+        document.querySelector(
+          "#domain"
+        ).innerHTML = `<div class = "row p-2">${splitDomainsList(
+          formGenerateDomains(
+            generateDomains(pronoun, adj, noun, extensions),
+            generateAndInsertANewDomainInDomainsList(inputDom)
+          )
+        )}</div>`;
+
+        let regards = document.querySelector("#regards");
+        let initText = document.querySelector("#domain");
+
+        hideShowRegards(regards, initText);
+      });
+
     generateAndInsertANewDomainInDomainsList(inputDom);
   });
 };
