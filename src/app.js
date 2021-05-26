@@ -24,6 +24,7 @@ const generateDomains = (arr1, arr2, arr3, arr4) => {
 };
 
 const formGenerateDomains = (arr, newDomain) => {
+  arr.push(newDomain);
   return arr.map(
     str =>
       //   Hay que hacer esta parte más dinámica
@@ -31,7 +32,6 @@ const formGenerateDomains = (arr, newDomain) => {
       `<li>
             <i class="far fa-check-circle mr-3"></i>
                 ${str.replace("es.", ".es")}
-                ${newDomain}
         </li>`
   );
 };
@@ -74,29 +74,27 @@ const hideShowRegards = (domIdHideShow, domIdGenerate) => {
 };
 
 window.onload = () => {
+  let inputDom = document.querySelector("input");
+
   document.querySelector("#btnNewDomain").addEventListener("click", () => {
-    let inputDom = document.querySelector("input");
-
-    document
-      .querySelector("#btnShowHideDomain")
-      .addEventListener("click", () => {
-        document.querySelector("#listContainer").style.marginTop = "2rem";
-
-        document.querySelector(
-          "#domain"
-        ).innerHTML = `<div class = "row p-2">${splitDomainsList(
-          formGenerateDomains(
-            generateDomains(pronoun, adj, noun, extensions),
-            generateAndInsertANewDomainInDomainsList(inputDom)
-          )
-        )}</div>`;
-
-        let regards = document.querySelector("#regards");
-        let initText = document.querySelector("#domain");
-
-        hideShowRegards(regards, initText);
-      });
-
     generateAndInsertANewDomainInDomainsList(inputDom);
+  });
+
+  document.querySelector("#btnShowHideDomain").addEventListener("click", () => {
+    document.querySelector("#listContainer").style.marginTop = "2rem";
+
+    document.querySelector(
+      "#domain"
+    ).innerHTML = `<div class = "row p-2">${splitDomainsList(
+      formGenerateDomains(
+        generateDomains(pronoun, adj, noun, extensions),
+        generateAndInsertANewDomainInDomainsList(inputDom)
+      )
+    )}</div>`;
+
+    let regards = document.querySelector("#regards");
+    let initText = document.querySelector("#domain");
+
+    hideShowRegards(regards, initText);
   });
 };
