@@ -37,12 +37,12 @@ const formGenerateDomains = newDomain => {
   let arr = generateDomains(pronoun, adj, noun, extensions);
 
   return arr.map(
+    //   Hay que hacer esta parte más dinámica
     str =>
-      //   Hay que hacer esta parte más dinámica
-      `<li>
-            <i class="far fa-check-circle mr-3"></i>
-                ${str.replace("es.", ".es")}
-        </li>`
+      `<li><i class="far fa-check-circle mr-3"></i>${str.replace(
+        "es.",
+        ".es"
+      )}</li>`
   );
 };
 
