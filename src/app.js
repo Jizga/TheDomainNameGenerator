@@ -36,35 +36,33 @@ const formGenerateDomains = newDomain => {
 
   let arr = generateDomains(pronoun, adj, noun, extensions);
 
-  return arr.map(
-    //   Hay que hacer esta parte más dinámica
-    //Hay eliminar los ".esxx" *************** ??????????'
+  return arr.map(str => {
+    //**** */ ---------------- MATTIA -----------------------------
+    //   console.log(str.split(".")[0].substr(-3));
 
-    str => {
-      //**** */ ---------------- MATTIA -----------------------------
-      //   console.log(str.split(".")[0].substr(-3));
+    //   if (extensions.includes("." + str.split(".")[0].substr(-3))) {
+    //     str = str.split(".")[0].substr(-3);
+    //   }
+    //   return `<li><i class="far fa-check-circle mr-3"></i>${str.replace(
+    //     "es.",
+    //     ".es"
+    //   )}</li>`;
 
-      //   if (extensions.includes("." + str.split(".")[0].substr(-3))) {
-      //     str = str.split(".")[0].substr(-3);
-      //   }
-      //   return `<li><i class="far fa-check-circle mr-3"></i>${str.replace(
-      //     "es.",
-      //     ".es"
-      //   )}</li>`;
-
-      const IndxExtension = str.search("es.");
-      let newStr;
-
-      if (IndxExtension !== -1) {
-        newStr = str.slice(0, IndxExtension);
-        newStr += ".es";
-      } else {
-        newStr = str;
-      }
-
-      return `<li><i class="far fa-check-circle mr-3"></i>${newStr}</li>`;
+    // Search proporciona el lugar donde se encuentra el elemento buscado en NÚMERO
+    const IndxExtension = str.search("es.");
+    let newStr;
+    //Si encontró el elemento, por eso debe de ser distinto a -1
+    if (IndxExtension !== -1) {
+      //cortamos el str desde su inicio hasta la posición del elemento
+      newStr = str.slice(0, IndxExtension);
+      // y se le añade la terminación que quiero
+      newStr += ".es";
+    } else {
+      newStr = str;
     }
-  );
+
+    return `<li><i class="far fa-check-circle mr-3"></i>${newStr}</li>`;
+  });
 };
 
 const formSplitDomainsList = splitArr =>
