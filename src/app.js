@@ -4,7 +4,7 @@ import "./assets/img/rigo-baby.jpg";
 
 let pronoun = ["the", "our"];
 let adj = ["great", "big"];
-let noun = ["jogger", "racoones"];
+let noun = ["joggerio", "racoones"];
 let extensions = [".com", ".io"];
 
 const generateDomains = (arr1, arr2, arr3, arr4) => {
@@ -37,26 +37,25 @@ const formGenerateDomains = newDomain => {
   let arr = generateDomains(pronoun, adj, noun, extensions);
 
   return arr.map(str => {
-    //**** */ ---------------- MATTIA -----------------------------
-    //   console.log(str.split(".")[0].substr(-3));
-
-    //   if (extensions.includes("." + str.split(".")[0].substr(-3))) {
-    //     str = str.split(".")[0].substr(-3);
-    //   }
-    //   return `<li><i class="far fa-check-circle mr-3"></i>${str.replace(
-    //     "es.",
-    //     ".es"
-    //   )}</li>`;
-
     // Search proporciona el lugar donde se encuentra el elemento buscado en NÚMERO
-    const IndxExtension = str.search("es.");
+    const IndxExtensionEs = str.search("es.");
+    const IndxExtensionCom = str.search("com.");
+    const IndxExtensionIo = str.search("io.");
+
     let newStr;
+
     //Si encontró el elemento, por eso debe de ser distinto a -1
-    if (IndxExtension !== -1) {
+    if (IndxExtensionEs !== -1) {
       //cortamos el str desde su inicio hasta la posición del elemento
-      newStr = str.slice(0, IndxExtension);
+      newStr = str.slice(0, IndxExtensionEs);
       // y se le añade la terminación que quiero
       newStr += ".es";
+    } else if (IndxExtensionCom !== -1) {
+      newStr = str.slice(0, IndxExtensionCom);
+      newStr += ".com";
+    } else if (IndxExtensionIo !== -1) {
+      newStr = str.slice(0, IndxExtensionIo);
+      newStr += ".io";
     } else {
       newStr = str;
     }
