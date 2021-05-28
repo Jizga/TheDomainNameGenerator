@@ -65,7 +65,9 @@ const formGenerateDomains = newDomain => {
 };
 
 const formSplitDomainsList = splitArr =>
-  `<div class = "col-6 p-0"> ${splitArr.join("")} </div>`;
+  `<div class = "col-12 col-sm-12 col-md-6 col-lg-6 p-0"> 
+        ${splitArr.join("")} 
+    </div>`;
 
 const splitDomainsList = arr => {
   let firstPartArr = arr.slice(0, arr.length / 2);
